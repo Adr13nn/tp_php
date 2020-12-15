@@ -20,11 +20,10 @@ switch($route) {
     break;
     case "monEspace" : $toTemplate = showMonespace();
     break;
-    case "showListe" : showListe();
+    case "showListe" : $toTemplate = showListe();
     break;
     case "insertTache" : insert_tache();
     break;
-    
     case "listeTache" : $toTemplate = showListetache();
     break;
     default : $toTemplate = ["template" => "404.html"];
@@ -71,7 +70,7 @@ function showListe(): array {
 
     require_once "models/Tache.php";
 
-    $users = Utilisateur::getTaches();
+    $taches = Tache::getTaches();
 
     return ["template" => "monEspace.php", "datas" => $taches];
 }
