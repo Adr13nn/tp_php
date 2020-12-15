@@ -20,8 +20,11 @@ switch($route) {
     break;
     case "monEspace" : $toTemplate = showMonespace();
     break;
+    case "showListe" : showListe();
+    break;
     case "insertTache" : insert_tache();
     break;
+    
     case "listeTache" : $toTemplate = showListetache();
     break;
     default : $toTemplate = ["template" => "404.html"];
@@ -64,6 +67,15 @@ function showLogin(): array {
 //     return ["template" => "formulaire.php", "datas" => $livres];
 // }
 
+function showListe(): array {
+
+    require_once "models/Tache.php";
+
+    $users = Utilisateur::getUsers();
+
+    return ["template" => "monEspace.php", "datas" => $users];
+}
+
 function showListetache() {
     return ["template" => "listeTache.html"];
 }
@@ -72,7 +84,7 @@ function insert_user() {
 
     require_once "models/Utilisateur.php";
 
-    $user = new Utilisateur($_POST["pseudo"], $_POST["email"], $_POST["password"], "id_utilisateur");
+    $user = new Utilisateur($_POST["pseudo"], $_POST["email"], $_POST["password"]);
     var_dump($user);
 
     // $user->addId();
@@ -81,6 +93,7 @@ function insert_user() {
 
 
     $user->save_user();
+    $user ->showListe();
 
     header("Location:index.php?route=accueil");
     exit;
@@ -91,7 +104,9 @@ function insert_tache() {
     require_once "models/Tache.php";
 
     $user = new Tache($_POST["choixTache"], $_POST["choixDate"]);
-    var_dump($user);
+    // var_dump($user);
+
+        
 
     $user->save_tache();
 
@@ -102,17 +117,15 @@ function insert_tache() {
 
     // $user->save_user();
 
-    header("Location:index.php?route=listeTache");
+    header("Location:index.php?route=showListe");
     exit;
 }
 
 
 function showMonespace(): array {
-
-    require_once "models/Tache.php";
     
 
-    return ["template" => "monEspace.html"];
+    return ["template" => "monEspace.php"];
 
 }
 
