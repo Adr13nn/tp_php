@@ -49,7 +49,7 @@ function showHome(): array {
 
 function showRegister(): array {
 
-    return ["template" => "register.html"];
+    return ["template" => "register.php"];
 }
 
 function showLogin(): array {
@@ -94,7 +94,7 @@ function insert_user() {
     $user->save_user();
     // $user ->showListe();
 
-    header("Location:index.php?route=monEspace");
+    header("Location:index.php?route=accueil");
     exit;
 }
 
@@ -109,13 +109,7 @@ function insert_tache() {
 
     $user->save_tache();
 
-    // $user->addId();
-
-    // var_dump($user);
-
-
-    // $user->save_user();
-
+    
     header("Location:index.php?route=showListe");
     exit;
 }
@@ -131,10 +125,11 @@ function showMonespace(): array {
 function connect_user() {
     require_once "models/Utilisateur.php";
 
-    $user = new Utilisateur($_POST["pseudo"], $_POST["email"], $_POST["password"]);
+    $user = new Utilisateur($_POST["pseudo"], $_POST["password"]);
     // var_dump($user);
     $user->verify_user();
 
+    
 
     // if() {
     //     header("Location:index.php?route=monEspace");
@@ -143,6 +138,8 @@ function connect_user() {
     //     header("Location:index.php?route=accueil");
     //     exit;
     // }
+
+    header("Location:index.php?route=showListe");
     
 }
 

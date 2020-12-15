@@ -28,7 +28,7 @@ session_start();
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
-                            <form id="login-form" action="index.php?route=accueil" method="post" role="form" style="display: none;">
+                            <form id="login-form" action="index.php?route=connectionUser" method="post" role="form" style="display: block;">
                                 <div class="form-group">
                                     <input type="text" name="pseudo" id="pseudo" tabindex="1" class="form-control" placeholder="Pseudo" value="">
                                 </div>
@@ -52,7 +52,7 @@ session_start();
                                     </div>
                                 </div>
                             </form>
-                            <form id="register-form" action="index.php?route=newUser" method="POST" role="form" style="display: block;">
+                            <form id="register-form" action="index.php?route=newUser" method="POST" role="form" style="display: none;">
                                 <div class="form-group">
                                     <input type="text" name="pseudo" id="pseudo" tabindex="1" class="form-control" placeholder="Pseudo" value="">
                                 </div>

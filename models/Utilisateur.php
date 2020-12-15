@@ -9,7 +9,7 @@ class Utilisateur {
     private $id_utilisateur;
     
 
-    function __construct(string $pseudo, string $email, string $mdp) {
+    function __construct(string $pseudo, string $mdp) {
         $this->pseudo = $pseudo;
         $this->email = $email;
         $this->mdp = $mdp; 
