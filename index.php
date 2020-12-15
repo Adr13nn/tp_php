@@ -62,10 +62,9 @@ function insert_user() {
     require_once "models/Utilisateur.php";
 
     $user = new Utilisateur($_POST["pseudo"], $_POST["email"], $_POST["password"]);
-    var_dump($user);
+    // var_dump($user);
     $user->save_user();
 
-    
     // header("Location:index.php?route=accueil");
     // exit;
 }
