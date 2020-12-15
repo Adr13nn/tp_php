@@ -103,7 +103,7 @@ function insert_tache() {
     require_once "models/Tache.php";
 
     $user = new Tache($_POST["choixTache"], $_POST["choixDate"]);
-    // var_dump($user);
+    var_dump($user);
 
         
 

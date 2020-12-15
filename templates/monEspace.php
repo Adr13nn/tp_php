@@ -70,7 +70,7 @@ $taches = $toTemplate["datas"];
 			<div>
 				<ul>
 					<?php foreach($taches as $tache):?>
-						<li><?= $tache->id_tache ?>, écrit par <?= $tache->id_tache ?></li>
+						<li>la tache <?= $tache->id_tache ?> et la date <?= $tache->date_limite ?> ont été choisies</li>
 					<?php endforeach ?>
 				</ul>
 			</div>
