@@ -43,7 +43,7 @@ function showHome(): array {
     // fwrite($ressource, $compteur);
     // fclose($ressource);
 
-    return ["template" => "accueil.html"];
+    return ["template" => "accueil.php"];
 }
 
 
@@ -92,9 +92,9 @@ function insert_user() {
 
 
     $user->save_user();
-    $user ->showListe();
+    // $user ->showListe();
 
-    header("Location:index.php?route=accueil");
+    header("Location:index.php?route=monEspace");
     exit;
 }
 
