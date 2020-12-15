@@ -124,13 +124,13 @@ function connect_user() {
     $user->verify_user();
 
 
-    if(is_array($user)) {
-        header("Location:index.php?route=monEspace");
-        exit;
-    } else {
-        header("Location:index.php?route=accueil");
-        exit;
-    }
+    // if() {
+    //     header("Location:index.php?route=monEspace");
+    //     exit;
+    // } else {
+    //     header("Location:index.php?route=accueil");
+    //     exit;
+    // }
     
 }
 
