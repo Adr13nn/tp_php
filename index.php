@@ -6,7 +6,7 @@ $route = (isset($_GET["route"]))? $_GET["route"] : "accueil";
 
 switch($route) {
 
-    case "accueil" : $toTemplate = showHome();
+    case "accueil" : $toTemplate = showHome(); 
     break;
     case "register" : $toTemplate = showRegister();
     break;
@@ -61,12 +61,13 @@ function insert_user() {
 
     require_once "models/Utilisateur.php";
 
-    $user = new Utilisateur($_POST["pseudo"], $_POST["email"], $_POST["password"]);
-    
+    $user = new Utilisateur($_POST["pseudo"], $_POST["email"], $_POST["password"], $_POST["password"]);
+    var_dump($user);
     $user->save_user();
+
     
-    header("Location:index.php?route=accueil");
-    exit;
+    // header("Location:index.php?route=accueil");
+    // exit;
 }
 
 function insert_tache() {

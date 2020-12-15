@@ -9,10 +9,11 @@ class Utilisateur {
     private $id_utilisateur;
     
 
-    function __construct(string $pseudo, string $mdp) {
+    function __construct( $pseudo, $email, $mdp) {
         $this->pseudo = $pseudo;
         $this->email = $email;
-        $this->mdp = $mdp; 
+        $this->mdp = $mdp;
+        
     }
 
     function caracteristiques() {
