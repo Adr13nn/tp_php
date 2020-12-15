@@ -69,20 +69,6 @@ class Utilisateur {
         }
     }
 
-    static function getUsers(): array {
-
-        //echo "Je récupère le contenu de mon fichier livres.json :<br>";
-        $contenu = (file_exists("datas/livres.json"))? file_get_contents("datas/livres.json") : "";
-        //var_dump($contenu);
-
-        //echo "Je décode mon JSON en structure PHP (tableau associatif) :<br>";
-        $livres = json_decode($contenu);
-        //var_dump($livres);
-
-        $livres = (is_array($livres))? $livres : [];
-
-        return $users;
-    }
 
 
     static function getUsers(): array {

@@ -71,14 +71,14 @@ function showListe(): array {
 
     require_once "models/Tache.php";
 
-    $users = Utilisateur::getUsers();
+    $users = Utilisateur::getTaches();
 
-    return ["template" => "monEspace.php", "datas" => $users];
+    return ["template" => "monEspace.php", "datas" => $taches];
 }
 
-function showListetache() {
-    return ["template" => "listeTache.html"];
-}
+// function showListetache() {
+//     return ["template" => "listeTache.html"];
+// }
 
 function insert_user() {
 
