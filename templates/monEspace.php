@@ -1,6 +1,6 @@
 <?php 
 
-$users = $toTemplate["datas"];
+$taches = $toTemplate["datas"];
 
 ?>
 
@@ -69,8 +69,8 @@ $users = $toTemplate["datas"];
 			</div>
 			<div>
 				<ul>
-					<?php foreach($users as $user):?>
-						<li><?= $livre->titre ?>, écrit par <?= $livre->auteur ?></li>
+					<?php foreach($taches as $tache):?>
+						<li><?= $tache->id_tache ?>, écrit par <?= $tache->id_tache ?></li>
 					<?php endforeach ?>
 				</ul>
 			</div>
