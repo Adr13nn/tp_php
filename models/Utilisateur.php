@@ -16,12 +16,12 @@ class Utilisateur {
         
     }
 
-    function caracteristiques() {
-        $this->pseudo = $pseudo;
-        $this->email = $email;
-        $this->mdp = $mdp;
-        $this->id_utilisateur = $id_utilisateur++; 
-    }
+    // function caracteristiques() {
+    //     $this->pseudo = $pseudo;
+    //     $this->email = $email;
+    //     $this->mdp = $mdp;
+    //     $this->id_utilisateur = $id_utilisateur++; 
+    // }
 
     function addId(){
         $this->id_utilisateur++;
@@ -57,7 +57,7 @@ class Utilisateur {
         // var_dump($users);
 
         if($user["pseudo"] == $users["pseudo"] && $user["mdp"] == $users["mdp"]) {
-            $this-> getUser();
+            $this-> getUsers();
             
             $_SESSION["savedUser"] = $user;
             

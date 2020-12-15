@@ -65,8 +65,8 @@ function insert_user() {
     // var_dump($user);
     $user->save_user();
 
-    // header("Location:index.php?route=accueil");
-    // exit;
+    header("Location:index.php?route=accueil");
+    exit;
 }
 
 function insert_tache() {
