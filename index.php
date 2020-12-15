@@ -18,6 +18,12 @@ switch($route) {
     break;
     case 'connectionUser' : $toTemplate = connect_user();
     break;
+    case "monEspace" : $toTemplate = showMonespace();
+    break;
+    case "insertTache" : insert_tache();
+    break;
+    case "listeTache" : $toTemplate = showListetache();
+    break;
     default : $toTemplate = ["template" => "404.html"];
 
 }
@@ -58,14 +64,18 @@ function showLogin(): array {
 //     return ["template" => "formulaire.php", "datas" => $livres];
 // }
 
+function showListetache() {
+    return ["template" => "listeTache.html"];
+}
+
 function insert_user() {
 
     require_once "models/Utilisateur.php";
 
-    $user = new Utilisateur($_POST["pseudo"], $_POST["email"], $_POST["password"], );
+    $user = new Utilisateur($_POST["pseudo"], $_POST["email"], $_POST["password"], "id_utilisateur");
     var_dump($user);
 
-    $user->addId();
+    // $user->addId();
 
     var_dump($user);
 
@@ -76,10 +86,40 @@ function insert_user() {
     exit;
 }
 
+function insert_tache() {
+
+    require_once "models/Tache.php";
+
+    $user = new Tache($_POST["choixTache"], $_POST["choixDate"]);
+    var_dump($user);
+
+    $user->save_tache();
+
+    // $user->addId();
+
+    // var_dump($user);
+
+
+    // $user->save_user();
+
+    header("Location:index.php?route=listeTache");
+    exit;
+}
+
+
+function showMonespace(): array {
+
+    require_once "models/Tache.php";
+    
+
+    return ["template" => "monEspace.html"];
+
+}
+
 function connect_user() {
     require_once "models/Utilisateur.php";
 
-    $user = new Utilisateur($_POST["pseudo"], $_POST["password"]);
+    $user = new Utilisateur($_POST["pseudo"], $_POST["email"], $_POST["password"]);
     // var_dump($user);
     $user->verify_user();
 
@@ -94,12 +134,7 @@ function connect_user() {
     
 }
 
-
-
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="fr">
