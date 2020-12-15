@@ -12,8 +12,8 @@ switch($route) {
     break;
     case 'login' : $toTemplate = showLogin();
     break;
-    case "formlivre" : $toTemplate = showFormLivre();
-    break;
+    // case "formlivre" : $toTemplate = showFormLivre();
+    // break;
     case "newUser" : insert_user();
     break;
     case 'connectionUser' : $toTemplate = connect_user();
@@ -24,16 +24,16 @@ switch($route) {
 
 function showHome(): array {
 
-    $ressource = fopen("compteur.txt", "r");
-    $compteur = fgets($ressource);
-    fclose($ressource);
-    $compteur++;
+    // $ressource = fopen("compteur.txt", "r");
+    // $compteur = fgets($ressource);
+    // fclose($ressource);
+    // $compteur++;
     
-    echo $compteur;
+    // echo $compteur;
     
-    $ressource = fopen("compteur.txt", "w");
-    fwrite($ressource, $compteur);
-    fclose($ressource);
+    // $ressource = fopen("compteur.txt", "w");
+    // fwrite($ressource, $compteur);
+    // fclose($ressource);
 
     return ["template" => "accueil.html"];
 }
@@ -49,14 +49,14 @@ function showLogin(): array {
     return ["template" => "accueil.html"];
 }
 
-function showFormLivre(): array {
+// function showFormLivre(): array {
 
-    require_once "models/Livre.php";
+//     require_once "models/Livre.php";
 
-    $livres = Livre::getLivres();
+//     $livres = Livre::getLivres();
 
-    return ["template" => "formulaire.php", "datas" => $livres];
-}
+//     return ["template" => "formulaire.php", "datas" => $livres];
+// }
 
 function insert_user() {
 
@@ -72,8 +72,8 @@ function insert_user() {
 
     $user->save_user();
 
-    // header("Location:index.php?route=accueil");
-    // exit;
+    header("Location:index.php?route=accueil");
+    exit;
 }
 
 function connect_user() {
@@ -84,13 +84,13 @@ function connect_user() {
     $user->verify_user();
 
 
-    // if(is_array($user)) {
-    //     header("Location:index.php?route=monEspace");
-    //     exit;
-    // } else {
-    //     header("Location:index.php?route=accueil");
-    //     exit;
-    // }
+    if(is_array($user)) {
+        header("Location:index.php?route=monEspace");
+        exit;
+    } else {
+        header("Location:index.php?route=accueil");
+        exit;
+    }
     
 }
 
