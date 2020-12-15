@@ -10,21 +10,15 @@ switch($route) {
     break;
     case "register" : $toTemplate = showRegister();
     break;
-    case 'login' : $toTemplate = showLogin();
-    break;
-    // case "formlivre" : $toTemplate = showFormLivre();
-    // break;
-    case "newUser" : insert_user();
-    break;
     case 'connectionUser' : $toTemplate = connect_user();
     break;
     case "monEspace" : $toTemplate = showMonespace();
     break;
     case "showListe" : $toTemplate = showListe();
     break;
-    case "insertTache" : insert_tache();
+    case "newUser" : insert_user();
     break;
-    case "listeTache" : $toTemplate = showListetache();
+    case "insertTache" : insert_tache();
     break;
     default : $toTemplate = ["template" => "404.html"];
 
@@ -52,19 +46,6 @@ function showRegister(): array {
     return ["template" => "register.php"];
 }
 
-function showLogin(): array {
-
-    return ["template" => "accueil.html"];
-}
-
-// function showFormLivre(): array {
-
-//     require_once "models/Livre.php";
-
-//     $livres = Livre::getLivres();
-
-//     return ["template" => "formulaire.php", "datas" => $livres];
-// }
 
 function showListe(): array {
 
@@ -75,25 +56,15 @@ function showListe(): array {
     return ["template" => "monEspace.php", "datas" => $taches];
 }
 
-// function showListetache() {
-//     return ["template" => "listeTache.html"];
-// }
 
 function insert_user() {
 
     require_once "models/Utilisateur.php";
 
     $user = new Utilisateur($_POST["pseudo"], $_POST["email"], $_POST["password"]);
-    var_dump($user);
-
-    // $user->addId();
-
-    var_dump($user);
-
-
+    
     $user->save_user();
-    // $user ->showListe();
-
+    
     header("Location:index.php?route=accueil");
     exit;
 }
@@ -105,19 +76,14 @@ function insert_tache() {
     $user = new Tache($_POST["choixTache"], $_POST["choixDate"]);
     var_dump($user);
 
-        
-
     $user->save_tache();
 
-    
     header("Location:index.php?route=showListe");
     exit;
 }
 
-
 function showMonespace(): array {
     
-
     return ["template" => "monEspace.php"];
 
 }
@@ -128,8 +94,6 @@ function connect_user() {
     $user = new Utilisateur($_POST["pseudo"], $_POST["password"]);
     // var_dump($user);
     $user->verify_user();
-
-    
 
     // if() {
     //     header("Location:index.php?route=monEspace");
@@ -155,14 +119,6 @@ function connect_user() {
 </head>
 <body>
 
-    <!-- <nav>
-        <ul>
-            <li><a href="index.php?route=accueil">Accueil</a></li>
-            <li><a href="index.php?route=autrepage">Autre page</a></li>
-            <li><a href="index.php?route=formlivre">Formulaire d'ajout d'un livre</a></li>
-        </ul>
-    </nav> -->
-    
     <?php require "templates/" . $toTemplate['template']; ?>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
