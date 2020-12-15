@@ -9,10 +9,10 @@ class Utilisateur {
     private $id_utilisateur;
     
 
-    function __construct(string $pseudo, string $email, string $mdp, int $id_utilisateur = 1) {
+    function __construct(string $pseudo, string $email, string $mdp) {
         $this->pseudo = $pseudo;
+        $this->email = $email;
         $this->mdp = $mdp; 
-        $this->id_utilisateur = $id_utilisateur;
     }
 
     function caracteristiques() {
@@ -39,6 +39,7 @@ class Utilisateur {
         $users = (is_array($users))? $users : [];
     
         $user = get_object_vars($this);
+
         array_push($users, $user);
         $handle = fopen("datas/users.json", "w");
         $json = json_encode($users);
