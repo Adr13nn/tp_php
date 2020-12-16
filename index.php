@@ -97,6 +97,7 @@ function connect_user() {
     if($user->verify_user()){
         header("Location:index.php?route=myspace");
         exit;
+        // return ["template" => "monEspace.php"];
     }else{
         echo "Le compte n'existe pas !";
         return ["template" => "accueil.php"];

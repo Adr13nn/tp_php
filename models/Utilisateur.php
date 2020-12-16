@@ -45,9 +45,11 @@ class Utilisateur {
     function verify_user() {
         $connect = false;
         $contenu = (file_exists("datas/users.json"))? file_get_contents("datas/users.json") : "";
-        $contenu = (is_array($contenu))? $contenu : [];
+        $taches = json_decode($contenu);
+        $taches = (is_array($taches))? $taches : [];
+        
 
-        foreach($contenu as $value) {
+        foreach($taches as $value) {
             if($value->pseudo == $this->pseudo && $value->password == $this->password) {
                 $connect = true;
             }

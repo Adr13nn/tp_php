@@ -19,7 +19,7 @@ $taches = $toTemplate["datas"];
 							<a href="#" id="login-form-link">Se déconnecter</a>
 						</div>
 						<div class="col-xs-6">
-							<a href="index.php?route=accueil" class="active id="register-form-link">Accueil</a>
+							<a href="index.php?route=accueil" class="active" id="register-form-link">Accueil</a>
 						</div>
 					</div>
 					<hr>
