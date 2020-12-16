@@ -10,7 +10,7 @@
 			<div class="panel panel-login">
 				<div class="panel-heading">
 					<div>
-						<p>Vous êtes maintenant connecté en tant que : <?php $_SESSION['pseudo']; ?> </p>
+						<p>Vous êtes maintenant connecté en tant que : <?= $_SESSION["pseudo"];?> </p>
 					</div>
 					<div class="row">
 						<div class="col-xs-6">

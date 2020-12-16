@@ -52,7 +52,7 @@ function showListe(): array {
 
     $taches = Tache::getTaches();
 
-    return ["template" => "monespaceliste.php", "datas" => $taches, "sesssion" => $_SESSION];
+    return ["template" => "monespaceliste.php", "datas" => $taches];
 }
 
 
@@ -86,6 +86,7 @@ function insert_tache() {
 
     header("Location:index.php?route=showListe");
     exit;
+    
 }
 
 function showMonespace(): array {
@@ -100,8 +101,7 @@ function connect_user() {
     $user = new Utilisateur( $_SESSION["pseudo"] = $_POST["pseudo"], $_SESSION["password"] = $_POST["password"]);
     
     if($user->verify_user()){
-        header("Location:index.php?route=monEspace");
-        exit;
+        return ["template" => "monEspace.php"];
     }else{
         echo "Le compte n'existe pas !";
         return ["template" => "accueil.php"];
