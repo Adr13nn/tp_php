@@ -62,12 +62,17 @@ function insert_user() {
 
     $user = new Utilisateur($_SESSION["pseudo"] = $_POST["pseudo"], $_SESSION["password"] = $_POST["password"],$_SESSION["email"] = $_POST["email"]);
     // var_dump($user);
-    $user->save_user();
 
-
-
-    header("Location:index.php?route=accueil");
-    exit;
+    if($user->verify_user()){
+        echo "le pseudo renseigné est déjà pris !";
+        header("Location:index.php?route=register");
+        exit;
+    }else {
+        $user->save_user();
+        header("Location:index.php?route=accueil");
+        exit;
+    }
+    
 }
 
 function insert_tache() {
