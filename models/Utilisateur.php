@@ -9,7 +9,7 @@ class Utilisateur {
     private $id_utilisateur;
     
 
-    function __construct( $pseudo, $password, $email=null) {
+    function __construct( $pseudo, $email=null, $password) {
         $this->pseudo = $pseudo;
         $this->email = $email;
         $this->password = $password;
@@ -47,7 +47,7 @@ class Utilisateur {
         $contenu = (file_exists("datas/users.json"))? file_get_contents("datas/users.json") : "";
         $taches = json_decode($contenu);
         $taches = (is_array($taches))? $taches : [];
-        
+
 
         foreach($taches as $value) {
             if($value->pseudo == $this->pseudo && $value->password == $this->password) {
