@@ -38,23 +38,21 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="text-center">
-                                                <a href="index.php?route=default" tabindex="5" class="forgot-password">Mot de passe oublié ?</a>
-                                            </div>
+                                        <div class="col-sm-6 col-sm-offset-3">
+                                            <a href="index.php?route=default" tabindex="5" class="forgot-password">Mot de passe oublié ?</a>  
                                         </div>
                                     </div>
                                 </div>
                             </form>
                             <form id="register-form" action="index.php?route=newUser" method="POST" role="form" style="display: block;">
                                 <div class="form-group">
-                                    <input type="text" name="pseudo" id="pseudo" tabindex="1" class="form-control" placeholder="Pseudo" value="">
+                                    <input type="text" name="pseudo" id="pseudo" tabindex="1" class="form-control" placeholder="Pseudo" required="required" value="">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
+                                    <input type="password" name="password" id="password" tabindex="2" class="form-control" required="required" placeholder="Password">
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Adresse Email" value="">
+                                    <input type="email" name="email" id="email" tabindex="1" class="form-control" required="required" placeholder="Adresse Email" value="">
                                 </div>
                                 <div class="form-group">
 									<div class="row">

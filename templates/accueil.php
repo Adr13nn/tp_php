@@ -24,10 +24,10 @@
                         <div class="col-lg-12">
                             <form id="login-form" action="index.php?route=connectionUser" method="post" role="form" style="display: block;">
                                 <div class="form-group">
-                                    <input type="text" name="pseudo" id="pseudo" tabindex="1" class="form-control" placeholder="Pseudo" value="">
+                                    <input type="text" name="pseudo" id="pseudo" tabindex="1" class="form-control" required="required" placeholder="Pseudo" value="">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Mot de passe">
+                                    <input type="password" name="password" id="password" tabindex="2" class="form-control" required="required" placeholder="Mot de passe">
                                 </div>
                                 <div class="form-group">
                                     <div class="row">

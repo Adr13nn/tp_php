@@ -100,7 +100,6 @@ function connect_user() {
         return ["template" => "accueil.php"];
     }  
 }
-
 ?>
 
 <!DOCTYPE html>
