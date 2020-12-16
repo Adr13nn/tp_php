@@ -24,11 +24,11 @@ class Tache {
         $taches = json_decode($contenu);
         //var_dump($livres);
    
-        $taches = (is_array($users))? $users : [];
+        $taches = (is_array($taches))? $taches : [];
     
         $tache = get_object_vars($this);
 
-        array_push($taches, $tahe);
+        array_push($taches, $tache);
         $handle = fopen("datas/taches.json", "w");
         $json = json_encode($taches);
         fwrite($handle, $json);
