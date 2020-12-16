@@ -1,5 +1,4 @@
 <?php 
-// var_dump($toTemplate["datas"]);
 $taches = $toTemplate["datas"];
 
 ?>
@@ -14,6 +13,7 @@ $taches = $toTemplate["datas"];
 		<div class="col-md-6 col-md-offset-3">
 			<div class="panel panel-login">
 				<div class="panel-heading">
+					<p>Vous êtes maintenant connecté en tant que : <?php $_SESSION['pseudo'] ?> </p>
 					<div class="row">
 						<div class="col-xs-6">
 							<a href="#" id="login-form-link">Se déconnecter</a>

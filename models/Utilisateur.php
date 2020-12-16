@@ -51,8 +51,6 @@ class Utilisateur {
             if($value->pseudo == $this->pseudo && $value->password == $this->password) {
                 $connect = true;
             }
-    
-        
         }
         return $connect;
     }
