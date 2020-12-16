@@ -21,16 +21,16 @@ class Tache {
         //var_dump($contenu);
 
         //echo "Je décode mon JSON en structure PHP (tableau associatif) :<br>";
-        $users = json_decode($contenu);
+        $taches = json_decode($contenu);
         //var_dump($livres);
    
-        $users = (is_array($users))? $users : [];
+        $taches = (is_array($users))? $users : [];
     
-        $user = get_object_vars($this);
+        $tache = get_object_vars($this);
 
-        array_push($users, $user);
+        array_push($taches, $tahe);
         $handle = fopen("datas/taches.json", "w");
-        $json = json_encode($users);
+        $json = json_encode($taches);
         fwrite($handle, $json);
         fclose($handle);   
     }
