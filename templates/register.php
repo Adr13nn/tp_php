@@ -14,7 +14,7 @@
                             <a href="index.php?route=accueil" id="login-form-link">Se connecter</a>
                         </div>
                         <div class="col-xs-6">
-                            <a href="#" class="active id="register-form-link">S'enregistrer</a>
+                            <a href="#" class="active" id="register-form-link">S'enregistrer</a>
                         </div>
                     </div>
                     <hr>
@@ -40,7 +40,7 @@
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="text-center">
-                                                <a href="#" tabindex="5" class="forgot-password">Mot de passe oublié ?</a>
+                                                <a href="index.php?route=default" tabindex="5" class="forgot-password">Mot de passe oublié ?</a>
                                             </div>
                                         </div>
                                     </div>
