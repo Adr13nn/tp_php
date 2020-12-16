@@ -17,10 +17,6 @@ class Utilisateur {
         
     }
 
-    function addId(){
-        $this->id_utilisateur++;
-    }
-
     function save_user() {
 
         //echo "Je récupère le contenu de mon fichier livres.json :<br>";

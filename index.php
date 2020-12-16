@@ -57,13 +57,10 @@ function insert_user() {
     // var_dump($users);
 
     if($user->verify_user()){
-        echo "le pseudo renseigné est déjà pris !";
         header("Location:index.php?route=register");
         exit;
     }else {
-        $user->id_utilisateur = sizeof($users++);
-        // $user->addId(); 
-        // var_dump($user);
+        $user->id_utilisateur = sizeof($users++); 
         $user->save_user();
         header("Location:index.php?route=accueil");
         exit;
