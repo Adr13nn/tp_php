@@ -51,17 +51,19 @@ function insert_user() {
     require_once "models/Utilisateur.php";
 
     $user = new Utilisateur($_SESSION["pseudo"] = $_POST["pseudo"], $_SESSION["password"] = $_POST["password"],$_SESSION["email"] = $_POST["email"]);
-    var_dump($user);
-
+    // var_dump($user);
+    
+    $users = Utilisateur::getUsers();
+    // var_dump($users);
 
     if($user->verify_user()){
         echo "le pseudo renseigné est déjà pris !";
         header("Location:index.php?route=register");
         exit;
     }else {
-        $user->id_utilisateur = rand(0,10000);
-        $user->addId(); //histoire d'augenter la probabilité de ne pas tomber sur le meme rand(); c'est du bricolage un peu..
-        var_dump($user);
+        $user->id_utilisateur = sizeof($users++);
+        // $user->addId(); 
+        // var_dump($user);
         $user->save_user();
         header("Location:index.php?route=accueil");
         exit;

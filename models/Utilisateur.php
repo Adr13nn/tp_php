@@ -57,6 +57,19 @@ class Utilisateur {
         }
         return $connect;
     }
+
+    static function getusers(): array {
+
+       
+        $contenu = (file_exists("datas/users.json"))? file_get_contents("datas/users.json") : "";
+        
+        $users = json_decode($contenu);
+        
+
+        $users = (is_array($users))? $users : [];
+
+        return $users;
+    }
 }
 
 ?>
