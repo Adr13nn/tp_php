@@ -98,7 +98,7 @@ function connect_user() {
         header("Location:index.php?route=myspace");
         exit;
     }else{
-        echo "une erreur s'est produite";
+        echo "Le compte n'existe pas !";
         return ["template" => "accueil.php"];
     }  
 }
