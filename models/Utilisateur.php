@@ -57,18 +57,3 @@ class Utilisateur {
         return $connect;
     }
 }
-//     static function getUsers(): array {
-
-//         //echo "Je récupère le contenu de mon fichier livres.json :<br>";
-//         $contenu = (file_exists("datas/users.json"))? file_get_contents("datas/users.json") : "";
-//         //var_dump($contenu);
-
-//         //echo "Je décode mon JSON en structure PHP (tableau associatif) :<br>";
-//         $users = json_decode($contenu);
-//         //var_dump($livres);
-
-//         $users = (is_array($users))? $users : [];
-
-//         return $users;
-//     }
-// }

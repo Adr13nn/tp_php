@@ -1,5 +1,4 @@
 
-
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -10,7 +9,9 @@
 		<div class="col-md-6 col-md-offset-3">
 			<div class="panel panel-login">
 				<div class="panel-heading">
-					<p>Vous êtes maintenant connecté en tant que : <?php $_SESSION['pseudo'] ?> </p>
+					<div>
+						<p>Vous êtes maintenant connecté en tant que : <?php $_SESSION['pseudo']; ?> </p>
+					</div>
 					<div class="row">
 						<div class="col-xs-6">
 							<a href="#" id="login-form-link">Se déconnecter</a>
