@@ -26,16 +26,6 @@ switch($route) {
 
 function showHome(): array {
 
-    // $ressource = fopen("compteur.txt", "r");
-    // $compteur = fgets($ressource);
-    // fclose($ressource);
-    // $compteur++;
-    
-    // echo $compteur;
-    
-    // $ressource = fopen("compteur.txt", "w");
-    // fwrite($ressource, $compteur);
-    // fclose($ressource);
     return ["template" => "accueil.php"];
 }
 
