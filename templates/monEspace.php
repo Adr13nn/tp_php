@@ -1,5 +1,5 @@
 <?php 
-
+// var_dump($toTemplate["datas"]);
 $taches = $toTemplate["datas"];
 
 ?>

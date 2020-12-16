@@ -65,8 +65,10 @@ function insert_user() {
     // var_dump($user);
     $user->save_user();
 
-    header("Location:index.php?route=accueil");
-    exit;
+
+
+    // header("Location:index.php?route=accueil");
+    // exit;
 }
 
 function insert_tache() {
@@ -74,7 +76,7 @@ function insert_tache() {
     require_once "models/Tache.php";
 
     $user = new Tache($_POST["choixTache"], $_POST["choixDate"]);
-    var_dump($user);
+    // var_dump($user);
 
     $user->save_tache();
 
@@ -91,20 +93,15 @@ function showMonespace(): array {
 function connect_user() {
     require_once "models/Utilisateur.php";
 
-    $user = new Utilisateur($_POST["pseudo"], $_POST["password"]);
-    // var_dump($user);
-    $user->verify_user();
-
-    // if() {
-    //     header("Location:index.php?route=monEspace");
-    //     exit;
-    // } else {
-    //     header("Location:index.php?route=accueil");
-    //     exit;
-    // }
-
-    header("Location:index.php?route=showListe");
+    $user = new Utilisateur( $_SESSION["pseudo"] = $_POST["pseudo"], $_SESSION["pssword"] = $_POST["password"]);
     
+    if($user->verify_user()){
+        header("Location:index.php?route=myspace");
+        exit;
+    }else{
+        echo "une erreur s'est produite";
+        return ["template" => "accueil.php"];
+    }  
 }
 
 ?>
