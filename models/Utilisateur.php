@@ -6,13 +6,14 @@ class Utilisateur {
     private $pseudo;
     private $password;
     private $email;
-    private $id_utilisateur;
+    public $id_utilisateur;
     
 
     function __construct( $pseudo, $password,$email=null) {
         $this->pseudo = $pseudo;
         $this->password = $password;
         $this->email = $email;
+        
         
     }
 
