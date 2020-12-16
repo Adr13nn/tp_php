@@ -36,7 +36,6 @@ function showHome(): array {
     // $ressource = fopen("compteur.txt", "w");
     // fwrite($ressource, $compteur);
     // fclose($ressource);
-
     return ["template" => "accueil.php"];
 }
 
