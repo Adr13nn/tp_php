@@ -17,7 +17,7 @@ session_start();
                             <a href="index.php?route=accueil" id="login-form-link">Se connecter</a>
                         </div>
                         <div class="col-xs-4">
-                            <a href="index.php?route=register" class="active id="register-form-link">S'enregistrer</a>
+                            <a href="index.php?route=register" class="active" id="register-form-link">S'enregistrer</a>
 						</div>
 						<div class="col-xs-4">
                             <a href="index.php?route=monEspace" id="login-form-link">Mon espace</a>

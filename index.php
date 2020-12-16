@@ -52,7 +52,7 @@ function showListe(): array {
 
     $taches = Tache::getTaches();
 
-    return ["template" => "monEspace.php", "datas" => $taches, "sesssion" => $_SESSION];
+    return ["template" => "monespaceliste.php", "datas" => $taches, "sesssion" => $_SESSION];
 }
 
 
@@ -60,7 +60,7 @@ function insert_user() {
 
     require_once "models/Utilisateur.php";
 
-    $user = new Utilisateur($_SESSION["pseudo"] = $_POST["pseudo"], $_SESSION["email"] = $_POST["email"], $_SESSION["password"] = $_POST["password"]);
+    $user = new Utilisateur($_SESSION["pseudo"] = $_POST["pseudo"], $_SESSION["password"] = $_POST["password"],$_SESSION["email"] = $_POST["email"]);
     // var_dump($user);
     $user->save_user();
 

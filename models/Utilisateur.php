@@ -4,8 +4,8 @@
 class Utilisateur {
 
     private $pseudo;
-    private $email;
     private $password;
+    private $email;
     private $id_utilisateur;
     
 
