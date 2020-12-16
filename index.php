@@ -75,10 +75,10 @@ function insert_tache() {
 
     require_once "models/Tache.php";
 
-    $user = new Tache($_POST["choixTache"], $_POST["choixDate"]);
+    $tache = new Tache($_POST["choixTache"], $_POST["choixDate"]);
     // var_dump($user);
 
-    $user->save_tache();
+    $tache->save_tache();
 
     header("Location:index.php?route=showListe");
     exit;
