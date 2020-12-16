@@ -40,7 +40,7 @@
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="text-center">
-                                                <a href="#" tabindex="5" class="forgot-password">Mot de passe oublié ?</a>
+                                                <a href="index.php?route=default-404" tabindex="5" class="forgot-password">Mot de passe oublié ?</a>
                                             </div>
                                         </div>
                                     </div>
