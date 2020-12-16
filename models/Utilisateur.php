@@ -9,10 +9,10 @@ class Utilisateur {
     private $id_utilisateur;
     
 
-    function __construct( $pseudo, $email=null, $password) {
+    function __construct( $pseudo, $password,$email=null) {
         $this->pseudo = $pseudo;
-        $this->email = $email;
         $this->password = $password;
+        $this->email = $email;
         
     }
 
