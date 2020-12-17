@@ -14,7 +14,7 @@ switch($route) {
     break;
     case "showListe" : $toTemplate = showListe();
     break;
-    case 'connectionUser' : $toTemplate = connect_user();
+    case 'connectionUser' : connect_user();
     break;
     case "newUser" : insert_user();
     break;
