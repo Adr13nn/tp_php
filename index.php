@@ -60,7 +60,7 @@ function insert_user() {
 
     require_once "models/Utilisateur.php";
 
-    if(isset($_POST["pseudo"])) {
+    if(!isset($_POST["pseudo"])) {
         header("Location:index.php?route=accueil");
         exit;
     }else {
