@@ -52,7 +52,6 @@ function showMonespace(): array {
 
 }
 
-
 function showError(): array {
     return ['template' => '404.html'];
 }
@@ -61,21 +60,30 @@ function insert_user() {
 
     require_once "models/Utilisateur.php";
 
-    $user = new Utilisateur($_SESSION["pseudo"] = $_POST["pseudo"], $_SESSION["password"] = $_POST["password"],$_SESSION["email"] = $_POST["email"]);
-    // var_dump($user);
-    
-    $users = Utilisateur::getUsers();
-    // var_dump($users);
-
-    if($user->verify_user()){
+    if(!isset($_POST["pseudo"])) {
+        echo "veuillez renseigné un pseudo";
         header("Location:index.php?route=register");
         exit;
     }else {
-        $user->id_utilisateur = sizeof($users++); 
-        $user->save_user();
         header("Location:index.php?route=accueil");
         exit;
     }
+
+    // $user = new Utilisateur($_SESSION["pseudo"] = $_POST["pseudo"], $_SESSION["password"] = $_POST["password"],$_SESSION["email"] = $_POST["email"]);
+    
+    
+    // $users = Utilisateur::getUsers();
+   
+
+    // if($user->verify_user()){
+    //     header("Location:index.php?route=register");
+    //     exit;
+    // }else {
+    //     $user->id_utilisateur = sizeof($users++); 
+    //     $user->save_user();
+    //     header("Location:index.php?route=accueil");
+    //     exit;
+    // }
     
 }
 
