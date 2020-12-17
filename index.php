@@ -10,7 +10,7 @@ switch($route) {
     break;
     case "register" : $toTemplate = showRegister();
     break;
-    case 'connectionUser' : $toTemplate = connect_user();
+    case 'connectionUser' : connect_user();
     break;
     case "monEspace" : $toTemplate = showMonespace();
     break;
@@ -94,10 +94,12 @@ function connect_user() {
     $user = new Utilisateur( $_SESSION["pseudo"] = $_POST["pseudo"], $_SESSION["password"] = $_POST["password"]);
     
     if($user->verify_user()){
-        return ["template" => "monEspace.php"];
+        header("Location:index.php?route=monEspace");
+        exit;
     }else{
         echo "Le compte n'existe pas !";
-        return ["template" => "accueil.php"];
+        header("Location:index.php?route=accueil");
+    exit;
     }  
 }
 ?>
