@@ -8,7 +8,7 @@ class Tache {
     private $date_limite;
     private $id_utilisateur;
 
-    function __construct(string $description, string $date_limite, int $id_utilisateur, int $id_tache=null) {
+    function __construct(string $description, string $date_limite, int $id_utilisateur = 0, int $id_tache=null) {
         $this->id_tache = $id_tache;
         $this->description = $description;
         $this->date_limite = $date_limite; 
