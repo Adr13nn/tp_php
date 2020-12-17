@@ -61,7 +61,6 @@ function insert_user() {
     require_once "models/Utilisateur.php";
 
     if(!isset($_POST["pseudo"])) {
-        echo "veuillez renseigné un pseudo";
         header("Location:index.php?route=register");
         exit;
     }else {
