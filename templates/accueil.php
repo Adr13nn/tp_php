@@ -14,7 +14,7 @@
                             <a href="index.php?route=accueil" id="login-form-link">Se connecter</a>
                         </div>
                         <div class="col-xs-6">
-                            <a href="index.php?route=register" class="active" id="register-form-link">S'enregistrer</a>
+                            <a href="index.php?route=register" id="register-form-link">S'enregistrer</a>
 						</div>
                     </div>
                     <hr>
