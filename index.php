@@ -46,6 +46,13 @@ function showListe(): array {
 }
 
 
+function showMonespace(): array {
+    
+    return ["template" => "monEspace.php"];
+
+}
+
+
 function showError(): array {
     return ['template' => '404.html'];
 }
@@ -86,11 +93,6 @@ function insert_tache() {
     
 }
 
-function showMonespace(): array {
-    
-    return ["template" => "monEspace.php"];
-
-}
 
 function connect_user() {
     require_once "models/Utilisateur.php";
@@ -98,10 +100,12 @@ function connect_user() {
     $user = new Utilisateur( $_SESSION["pseudo"] = $_POST["pseudo"], $_SESSION["password"] = $_POST["password"]);
     
     if($user->verify_user()){
-        return ["template" => "monEspace.php"];
+        header("Location:index.php?route=monEspace");
+        exit;
     }else{
         echo "Le compte n'existe pas !";
-        return ["template" => "accueil.php"];
+        header("Location:index.php?route=accueil");
+        exit;
     }  
 }
 ?>
