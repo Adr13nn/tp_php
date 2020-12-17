@@ -20,7 +20,7 @@ switch($route) {
     break;
     case "insertTache" : insert_tache();
     break;
-    default : $toTemplate = ["template" => "404.html"];
+    default : $toTemplate = showError();
 
 }
 
@@ -45,6 +45,10 @@ function showListe(): array {
     return ["template" => "monespaceliste.php", "datas" => $taches];
 }
 
+
+function showError(): array {
+    return ['template' => '404.html'];
+}
 
 function insert_user() {
 
