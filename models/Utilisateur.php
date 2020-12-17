@@ -6,15 +6,48 @@ class Utilisateur {
     private $pseudo;
     private $password;
     private $email;
-    public $id_utilisateur;
+    private $id_utilisateur;
     
 
-    function __construct( $pseudo, $password,$email=null) {
+    function __construct( string $pseudo, string $password, $email=null, $id_utilisateur=null) {
         $this->pseudo = $pseudo;
         $this->password = $password;
         $this->email = $email;
+        $this->id_utilisateur = $id_utilisateur;
         
         
+    }
+
+    public function getPseudo(): int {
+        return $this->pseudo;
+    }
+
+    public function setPseudo(int $pseudo) {
+        $this->pseudo = $pseudo;
+    }
+
+    public function getPassword(): string {
+        return $this->username;
+    }
+
+    public function setPassword(string $password) {
+        $this->password = $password;
+    }
+    
+    public function getEmail(): string {
+        return $this->email;
+    }
+
+    public function setEmail(string $email) {
+        $this->email = $email;
+    }
+
+    public function getId_utilisateur(): int {
+        return $this->id_utilisateur;
+    }
+
+    public function setId_utilisateur(int $id_utilisateur) {
+        $this->id_utilisateur = $id_utilisateur;
     }
 
     function save_user() {
