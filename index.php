@@ -10,11 +10,11 @@ switch($route) {
     break;
     case "register" : $toTemplate = showRegister();
     break;
-    case 'connectionUser' : $toTemplate = connect_user();
-    break;
     case "monEspace" : $toTemplate = showMonespace();
     break;
     case "showListe" : $toTemplate = showListe();
+    break;
+    case 'connectionUser' : $toTemplate = connect_user();
     break;
     case "newUser" : insert_user();
     break;
