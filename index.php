@@ -61,12 +61,29 @@ function insert_user() {
     require_once "models/Utilisateur.php";
 
     if(!empty($_POST["pseudo"]) && !empty($_POST["password"]) && $_POST["password"] === $_POST["password2"]) {
-        header("Location:index.php?route=accueil");
-        exit;
-    }else {
-        header("Location:index.php?route=register");
-        exit;
+
+        $user = new Utilisateur($_SESSION["pseudo"] = $_POST["pseudo"], $_SESSION["password"] = $_POST["password"],$_SESSION["email"] = $_POST["email"]);
+        // var_dump($user);
+        if($user->save_user()) {
+            header("Location:index.php?route=accueil");
+            exit; 
+        }else {
+            header("Location:index.php?route=register");
+            exit;
+        }
+
     }
+
+
+    //     exit;
+
+    // }
+    //     header("Location:index.php?route=accueil");
+    //     exit;
+    // }else {
+    //     header("Location:index.php?route=register");
+    //     exit;
+    // }
 
     // $user = new Utilisateur($_SESSION["pseudo"] = $_POST["pseudo"], $_SESSION["password"] = $_POST["password"],$_SESSION["email"] = $_POST["email"]);
     
@@ -106,7 +123,7 @@ function connect_user() {
 
     $user = new Utilisateur( $_SESSION["pseudo"] = $_POST["pseudo"], $_SESSION["password"] = $_POST["password"]);
     
-    if($user->verify_user()){
+    if($user->save_user()){
         header("Location:index.php?route=monEspace");
         exit;
     }else{

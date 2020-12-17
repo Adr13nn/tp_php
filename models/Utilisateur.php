@@ -9,15 +9,16 @@ class Utilisateur {
     public $id_utilisateur;
     
 
-    function __construct( $pseudo, $password, $email=null) {
+    function __construct( $pseudo, $password, $email=null, int $id_utilisateur = 0) {
         $this->pseudo = $pseudo;
         $this->password = $password;
         $this->email = $email;
+        $this->id_utilisateur = $id_utilisateur;
         
         
     }
 
-    function save_user() {
+    function save_user(): bool {
 
         //echo "Je récupère le contenu de mon fichier livres.json :<br>";
         $contenu = (file_exists("datas/users.json"))? file_get_contents("datas/users.json") : "";
@@ -29,14 +30,31 @@ class Utilisateur {
    
         $users = (is_array($users))? $users : [];
         // var_dump($users);
-        $user = get_object_vars($this);
-        // var_dump($user);
 
-        array_push($users, $user);
-        $handle = fopen("datas/users.json", "w");
-        $json = json_encode($users);
-        fwrite($handle, $json);
-        fclose($handle);   
+        $connect = true;
+
+        foreach($users as $user) {
+            if($user->pseudo == $this->pseudo) {
+                $connect = false;
+            }
+        }
+
+        if($connect) {
+
+            $lastkey = (array_key_last($users) != null )? array_key_last($users) : 0;
+            $this->id_utilisateur = $users[$lastkey]->id_utilisateur + 1;
+            $user = get_object_vars($this);
+            // var_dump($user);
+            array_push($users, $user);
+            $handle = fopen("datas/users.json", "w");
+            $json = json_encode($users);
+            fwrite($handle, $json);
+            fclose($handle);  
+        }
+
+        
+        
+        return $connect;
     }
 
     function verify_user() {
