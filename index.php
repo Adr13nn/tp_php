@@ -59,15 +59,21 @@ function insert_user() {
 
         $user = new Utilisateur($_POST["pseudo"], password_hash($_POST["password"], PASSWORD_DEFAULT), $_POST["email"]);
 
-        if($user->verify_user()){
-            header("Location:index.php?route=register");
-            exit;
-        }else {
-            $user->id_utilisateur = sizeof($users++); 
-            $user->save_user();
-            header("Location:index.php?route=accueil");
-            exit;
-        }
+        $user->save_user();
+        
+        $_SESSION["checked"]["enreg"] = "vous êtes enregistré !";
+        
+    } else {
+        return $_SESSION["errors"]["enreg"] = "vous n'êtes pas enregistré !";
+        
+          
+    }
+
+    header("Location:index.php?route=accueil");
+    exit;
+
+    // Je redirige vers une fonction d'affichage
+    //header("Location:index.php?route=accueil");
 
 }
 
@@ -88,18 +94,29 @@ function insert_tache() {
 function connect_user() {
     require_once "models/Utilisateur.php";
 
-    $user = new Utilisateur( $_POST["pseudo"] = $_SESSION["pseudo"], $_POST["password"]);
-    
-    if($user->verify_user()) {
+    if(!empty($_POST["pseudo"]) && !empty($_POST["password"])) {
 
-        header("Location:index.php?route=monEspace");
-        exit;
+        $user = new Utilisateur( $_POST["pseudo"] = $_SESSION["pseudo"], $_POST["password"]);
         
-    } else {
-        header("Location:index.php?route=accueil");
-        exit;
-    }  
+        if($user->verify_user()) {
+            // L'utilisateur est "autorisé" à se connecter
+            $_SESSION["user"]["user_id"] = $user->getId_utilisateur();
+            $_SESSION["user"]["username"] = $user->getPseudo();
 
+            header("Location:index.php?route=monEspace");
+            exit;
+
+        } else {
+            // L'utilisateur n'est pas "autorisé" à se connecter
+            $_SESSION["errors"]["connexion"] = "Vous avez entré un mauvais identifiant et/ou mot de passe";
+        }
+
+    }else {
+       
+        $_SESSION["errors"]["champs"] = "L'ensemble des champs est obligatoire.";
+    }
+
+    header("Location:index.php?route=accueil");
     exit;
 
 }
