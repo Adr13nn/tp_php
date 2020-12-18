@@ -110,6 +110,7 @@ class Utilisateur {
         foreach($users as $user) {
             if($user->pseudo == $this->pseudo) {
                 $verif = password_verify($this->password, $user->password);
+                $this->id_utilisateur = $user->id_utilisateur;
             }
         }
 
