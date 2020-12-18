@@ -59,21 +59,15 @@ function insert_user() {
 
         $user = new Utilisateur($_POST["pseudo"], password_hash($_POST["password"], PASSWORD_DEFAULT), $_POST["email"]);
 
-        $user->save_user();
-        
-        $_SESSION["checked"]["enreg"] = "vous êtes enregistré !";
-        
-    } else {
-        return $_SESSION["errors"]["enreg"] = "vous n'êtes pas enregistré !";
-        
-          
-    }
-
-    header("Location:index.php?route=accueil");
-    exit;
-
-    // Je redirige vers une fonction d'affichage
-    //header("Location:index.php?route=accueil");
+        if($user->verify_user()){
+            header("Location:index.php?route=register");
+            exit;
+        }else {
+            $user->id_utilisateur = sizeof($users++); 
+            $user->save_user();
+            header("Location:index.php?route=accueil");
+            exit;
+        }
 
 }
 
@@ -98,12 +92,10 @@ function connect_user() {
     
     if($user->verify_user()) {
 
-        $_SESSION["checked"]["connexion"] = "Vous êtes bien identifié !";
         header("Location:index.php?route=monEspace");
         exit;
         
     } else {
-        $_SESSION["errors"]["connexion"] = "aucun compte trouvé !";
         header("Location:index.php?route=accueil");
         exit;
     }  
