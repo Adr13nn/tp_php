@@ -10,11 +10,11 @@ switch($route) {
     break;
     case "register" : $toTemplate = showRegister();
     break;
-    case 'connectionUser' : connect_user();
-    break;
     case "monEspace" : $toTemplate = showMonespace();
     break;
     case "showListe" : $toTemplate = showListe();
+    break;
+    case 'connectionUser' : connect_user();
     break;
     case "newUser" : insert_user();
     break;
@@ -35,6 +35,11 @@ function showRegister(): array {
     return ["template" => "register.php"];
 }
 
+function showMonespace(): array {
+    
+    return ["template" => "monEspace.php"];
+
+}
 
 function showListe(): array {
 
@@ -47,24 +52,29 @@ function showListe(): array {
 
 function insert_user() {
 
-    require_once "models/Utilisateur.php";
+    if(!empty($_POST["pseudo"]) && !empty($_POST["password"]) && $_POST["password"] === $_POST["password2"]) {
+        // Je peux procéder à la suite de l'ajout d'un utilisateur
 
-    $user = new Utilisateur($_SESSION["pseudo"] = $_POST["pseudo"], $_SESSION["password"] = $_POST["password"],$_SESSION["email"] = $_POST["email"]);
-    // var_dump($user);
-    
-    $users = Utilisateur::getUsers();
-    // var_dump($users);
+        require_once "models/Utilisateur.php";
 
-    if($user->verify_user()){
-        header("Location:index.php?route=register");
-        exit;
-    }else {
-        $user->id_utilisateur = sizeof($users++); 
+        $user = new Utilisateur($_POST["pseudo"], password_hash($_POST["password"], PASSWORD_DEFAULT), $_POST["email"]);
+
         $user->save_user();
-        header("Location:index.php?route=accueil");
-        exit;
+        
+        $_SESSION["checked"]["enreg"] = "vous êtes enregistré !";
+        
+    } else {
+        return $_SESSION["errors"]["enreg"] = "vous n'êtes pas enregistré !";
+        
+          
     }
-    
+
+    header("Location:index.php?route=accueil");
+    exit;
+
+    // Je redirige vers une fonction d'affichage
+    //header("Location:index.php?route=accueil");
+
 }
 
 function insert_tache() {
@@ -81,26 +91,28 @@ function insert_tache() {
     
 }
 
-function showMonespace(): array {
-    
-    return ["template" => "monEspace.php"];
-
-}
-
 function connect_user() {
     require_once "models/Utilisateur.php";
 
-    $user = new Utilisateur( $_SESSION["pseudo"] = $_POST["pseudo"], $_SESSION["password"] = $_POST["password"]);
+    $user = new Utilisateur( $_POST["pseudo"] = $_SESSION["pseudo"], $_POST["password"]);
     
-    if($user->verify_user()){
+    if($user->verify_user()) {
+
+        $_SESSION["checked"]["connexion"] = "Vous êtes bien identifié !";
         header("Location:index.php?route=monEspace");
         exit;
-    }else{
-        echo "Le compte n'existe pas !";
+        
+    } else {
+        $_SESSION["errors"]["connexion"] = "aucun compte trouvé !";
         header("Location:index.php?route=accueil");
-    exit;
+        exit;
     }  
+
+    exit;
+
 }
+
+
 ?>
 
 <!DOCTYPE html>

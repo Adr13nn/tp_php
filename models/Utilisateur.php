@@ -9,7 +9,7 @@ class Utilisateur {
     private $id_utilisateur;
     
 
-    function __construct( string $pseudo, string $password, $email=null, $id_utilisateur=null) {
+    function __construct( string $pseudo, string $password, string $email=null, int $id_utilisateur=0) {
         $this->pseudo = $pseudo;
         $this->password = $password;
         $this->email = $email;
@@ -18,11 +18,11 @@ class Utilisateur {
         
     }
 
-    public function getPseudo(): int {
+    public function getPseudo(): string {
         return $this->pseudo;
     }
 
-    public function setPseudo(int $pseudo) {
+    public function setPseudo(string $pseudo) {
         $this->pseudo = $pseudo;
     }
 
@@ -50,44 +50,7 @@ class Utilisateur {
         $this->id_utilisateur = $id_utilisateur;
     }
 
-    function save_user() {
-
-        //echo "Je récupère le contenu de mon fichier livres.json :<br>";
-        $contenu = (file_exists("datas/users.json"))? file_get_contents("datas/users.json") : "";
-        //var_dump($contenu);
-
-        //echo "Je décode mon JSON en structure PHP (tableau associatif) :<br>";
-        $users = json_decode($contenu);
-        //var_dump($livres);
-   
-        $users = (is_array($users))? $users : [];
-        // var_dump($users);
-        $user = get_object_vars($this);
-        // var_dump($user);
-
-        array_push($users, $user);
-        $handle = fopen("datas/users.json", "w");
-        $json = json_encode($users);
-        fwrite($handle, $json);
-        fclose($handle);   
-    }
-
-    function verify_user() {
-        $connect = false;
-        $contenu = (file_exists("datas/users.json"))? file_get_contents("datas/users.json") : "";
-        $taches = json_decode($contenu);
-        $taches = (is_array($taches))? $taches : [];
-
-
-        foreach($taches as $value) {
-            if($value->pseudo == $this->pseudo && $value->password == $this->password) {
-                $connect = true;
-            }
-        }
-        return $connect;
-    }
-
-    static function getusers(): array {
+    static function getUsers(): array {
 
        
         $contenu = (file_exists("datas/users.json"))? file_get_contents("datas/users.json") : "";
@@ -99,6 +62,61 @@ class Utilisateur {
 
         return $users;
     }
+
+    function save_user(): bool {
+
+        //echo "Je récupère le contenu de mon fichier livres.json :<br>";
+        $contenu = (file_exists("datas/users.json"))? file_get_contents("datas/users.json") : "";
+        //var_dump($contenu);
+        //echo "Je décode mon JSON en structure PHP (tableau associatif) :<br>";
+        $users = json_decode($contenu);
+        //var_dump($livres);
+        $users = (is_array($users))? $users : [];
+        // Variable de vérification du bon résultat de l'appel à la méthode (utilisateur enregistré)
+
+        $verif = true;
+
+        // Je parcours mon tableau (ma liste d'utilisateurs) :
+        foreach($users as $user) {
+            // Si l'on rencontre un utilisateur ayant le même pseudo, on ne permettra pas l'enregistrement de l'utilisateur courant
+            if($user->pseudo == $this->pseudo) {
+                $verif = false;
+            }
+        }
+
+        if($verif) {
+            $lastkey = (array_key_last($users) != null)? array_key_last($users) : 0;
+            $this->id_utilisateur = (!empty($users))? $users[$lastkey]->id_utilisateur + 1 : 1;
+
+            array_push($users, get_object_vars($this));
+
+            $handle = fopen("datas/users.json", "w");
+            $verif = (fwrite($handle, json_encode($users)))? true : false;
+            fclose($handle);
+        }
+        
+        return $verif;
+
+    }
+
+    function verify_user(): bool {
+        
+        $contenu = (file_exists("datas/users.json"))? file_get_contents("datas/users.json") : "";
+        $users = json_decode($contenu);
+        $users = (is_array($users))? $users : [];
+
+        $verif = false;
+
+        foreach($users as $user) {
+            if($user->pseudo == $this->pseudo) {
+                $verif = password_verify($this->password, $user->password);
+            }
+        }
+
+        return $verif;
+
+    }
+
 }
 
 ?>

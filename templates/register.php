@@ -52,6 +52,9 @@
                                     <input type="password" name="password" id="password" tabindex="2" class="form-control" required="required" placeholder="Password">
                                 </div>
                                 <div class="form-group">
+                                    <input type="password" name="password2" id="password2" tabindex="2" class="form-control" required="required" placeholder="Password">
+                                </div>
+                                <div class="form-group">
                                     <input type="email" name="email" id="email" tabindex="1" class="form-control" required="required" placeholder="Adresse Email" value="">
                                 </div>
                                 <div class="form-group">
