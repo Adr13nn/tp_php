@@ -37,7 +37,7 @@ function showRegister(): array {
 
 function showMonespace(): array {
     
-    return ["template" => "monEspace.php"];
+    return ["template" => "monEspace.php", "datas" => null];
 
 }
 
@@ -61,11 +61,10 @@ function insert_user() {
 
         $user->save_user();
         
-        $_SESSION["checked"]["enreg"] = "vous êtes enregistré !";
+        
         
     } else {
-        return $_SESSION["errors"]["enreg"] = "vous n'êtes pas enregistré !";
-        
+        $_SESSION["errors"]["connexion"] = "Erreur lors de l'enregistrement";
           
     }
 
@@ -81,7 +80,7 @@ function insert_tache() {
 
     require_once "models/Tache.php";
 
-    $tache = new Tache($_POST["choixTache"], $_POST["choixDate"]);
+    $tache = new Tache($_POST["choixTache"], $_POST["choixDate"], $_SESSION["user"]["user_id"]);
     // var_dump($user);
 
     $tache->save_tache();
@@ -96,8 +95,8 @@ function connect_user() {
 
     if(!empty($_POST["pseudo"]) && !empty($_POST["password"])) {
 
-        $user = new Utilisateur( $_POST["pseudo"] = $_SESSION["pseudo"], $_POST["password"]);
-        
+        $user = new Utilisateur( $_POST["pseudo"], $_POST["password"]);
+        var_dump($user);
         if($user->verify_user()) {
             // L'utilisateur est "autorisé" à se connecter
             $_SESSION["user"]["user_id"] = $user->getId_utilisateur();
