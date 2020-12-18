@@ -1,11 +1,4 @@
 
-<?php
-$message = $_SESSION["checked"]["connexion"];
-unset($message);
-
-?>
-
-
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
@@ -18,7 +11,7 @@ unset($message);
 			<div class="panel panel-login">
 				<div class="panel-heading">
 					<div>
-						<p>Vous êtes maintenant connecté en tant que : <?= $_SESSION["pseudo"];?> </p>
+						<p>Vous êtes maintenant connecté en tant que :<br><?= $_SESSION["user"]["username"];?><br><?= $_SESSION["user"]["user_id"]; ?></p>
 					</div>
 					<div class="row">
 						<div class="col-xs-6">

@@ -13,7 +13,6 @@ $taches = $toTemplate["datas"];
 		<div class="col-md-6 col-md-offset-3">
 			<div class="panel panel-login">
 				<div class="panel-heading">
-					<p>Vous êtes maintenant connecté en tant que : <?php $_SESSION['pseudo'] ?></p>
 					<div class="row">
 						<div class="col-xs-6">
 							<a href="#" id="login-form-link">Se déconnecter</a>
@@ -70,7 +69,7 @@ $taches = $toTemplate["datas"];
 			<div>
 				<ul>
 					<?php foreach($taches as $tache):?>
-						<li>la tache <?= $tache->id_tache ?> et la date <?= $tache->date_limite ?> ont été choisies</li>
+						<li>la tache <?= $tache->description ?> et la date <?= $tache->date_limite ?> ont été choisies</li>
 					<?php endforeach ?>
 				</ul>
 			</div>

@@ -97,6 +97,7 @@ function connect_user() {
 
         $user = new Utilisateur( $_POST["pseudo"], $_POST["password"]);
         var_dump($user);
+
         if($user->verify_user()) {
             // L'utilisateur est "autorisé" à se connecter
             $_SESSION["user"]["user_id"] = $user->getId_utilisateur();
@@ -108,6 +109,8 @@ function connect_user() {
         } else {
             // L'utilisateur n'est pas "autorisé" à se connecter
             $_SESSION["errors"]["connexion"] = "Vous avez entré un mauvais identifiant et/ou mot de passe";
+            header("Location:index.php?route=register");
+    exit;
         }
 
     }else {

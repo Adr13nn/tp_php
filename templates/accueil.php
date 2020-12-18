@@ -1,12 +1,12 @@
-<?php
+<?php if(isset($_SESSION["errors"])): ?>
 
-$message = $_SESSION["errors"]["connexion"];
-unset($message);
-
-
-?>
-
-
+    <ul>
+        <?php foreach($_SESSION["errors"] as $error): ?>
+            <li><?= $error ?></li>
+        <?php endforeach ?>
+    </ul>
+<?php unset($_SESSION["errors"]) ?>
+<?php endif ?>
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
