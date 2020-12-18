@@ -110,7 +110,7 @@ function connect_user() {
             // L'utilisateur n'est pas "autorisé" à se connecter
             $_SESSION["errors"]["connexion"] = "Vous avez entré un mauvais identifiant et/ou mot de passe";
             header("Location:index.php?route=register");
-    exit;
+            exit;
         }
 
     }else {
