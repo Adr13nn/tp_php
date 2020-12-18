@@ -74,7 +74,6 @@ class Utilisateur {
 
     static function getusers(): array {
 
-       
         $contenu = (file_exists("datas/users.json"))? file_get_contents("datas/users.json") : "";
         
         $users = json_decode($contenu);
