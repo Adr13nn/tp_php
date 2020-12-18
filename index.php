@@ -96,7 +96,7 @@ function connect_user() {
     if(!empty($_POST["pseudo"]) && !empty($_POST["password"])) {
 
         $user = new Utilisateur( $_POST["pseudo"], $_POST["password"]);
-        var_dump($user);
+        // var_dump($user);
 
         if($user->verify_user()) {
             // L'utilisateur est "autorisé" à se connecter
