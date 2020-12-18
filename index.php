@@ -45,7 +45,7 @@ function showListe(): array {
 
     require_once "models/Tache.php";
 
-    $taches = Tache::getTaches();
+    $taches = Tache::getTaches($_SESSION['user']['user_id']);
 
     return ["template" => "monespaceliste.php", "datas" => $taches];
 }

@@ -13,8 +13,7 @@ class Utilisateur {
         $this->pseudo = $pseudo;
         $this->password = $password;
         $this->email = $email;
-        $this->id_utilisateur = $id_utilisateur;
-        
+        $this->id_utilisateur = $id_utilisateur;    
         
     }
 

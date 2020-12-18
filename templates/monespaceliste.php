@@ -28,17 +28,9 @@ $taches = $toTemplate["datas"];
 						<div class="col-lg-12">
 							<form id="login-form" action="index.php?route=insertTache" method="POST" role="form" style="display: block;">
 								<div class="form-group">
-									<!-- <input type="text" name="pseudo" id="pseudo" tabindex="1" class="form-control" placeholder="Pseudo" value=""> -->
-									<select name="choixTache" id="choixTache">
-										<option value="" name="">--Choisissez une tâche à effectuer--</option>
-										<option value="1" name="tache1">1</option>
-										<option value="2" name="tache2">2</option>
-									</select>
-									<select name="choixDate" id="choixDate">
-										<option value="">--Choisissez la date limite--</option>
-										<option value="3" name="date1">3</option>
-										<option value="4" name="date2">4</option>
-									</select>
+								<input type="text" placeholder="Tâche à réaliser" name="choixTache">
+    							<label for="deadline">Avant le : </label>
+    							<input type="date" name="choixDate" id="choixDate">
 								</div>
 								<div class="form-group">
 									<div class="row">
@@ -67,9 +59,13 @@ $taches = $toTemplate["datas"];
 				</div>
 			</div>
 			<div>
+
+			<p>Liste des tâches a effectuer :</p> 
+	
+				<hr style="background: blue;">
 				<ul>
 					<?php foreach($taches as $tache):?>
-						<li>la tache <?= $tache->description ?> et la date <?= $tache->date_limite ?> ont été choisies</li>
+						<li><?= $tache->description ?><strong style="color: red;"> avant le :</strong> <?= $tache->date_limite ?></li>
 					<?php endforeach ?>
 				</ul>
 			</div>

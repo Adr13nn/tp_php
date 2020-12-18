@@ -77,19 +77,27 @@ class Tache {
 
     }
 
-    static function getTaches(): array {
+    static function getTaches(int $id): array {
 
-        //echo "Je récupère le contenu de mon fichier livres.json :<br>";
-        $contenu = (file_exists("datas/taches.json"))? file_get_contents("datas/taches.json") : "";
-        //var_dump($contenu);
+        $content = (file_exists("datas/taches.json"))? file_get_contents("datas/taches.json") : "";
+        $tasks = json_decode($content);
+        $tasks = (is_array($tasks))? $tasks : [];
 
-        //echo "Je décode mon JSON en structure PHP (tableau associatif) :<br>";
-        $taches = json_decode($contenu);
-        //var_dump($livres);
+        $userTasks = []; 
+        foreach($tasks as $task) {
+            if($task->id_utilisateur == $id) {
+                array_push($userTasks, $task);
+            }
+        } 
 
-        $taches = (is_array($taches))? $taches : [];
+        usort($userTasks, function ($a, $b) {
+            if ($a->date_limite == $b->date_limite) {
+                return 0;
+            }
+            return ($a->date_limite < $b->date_limite) ? -1 : 1;
+        });
 
-        return $taches;
+        return $userTasks;
     }
 
 }
